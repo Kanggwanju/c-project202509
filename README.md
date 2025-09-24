@@ -53,7 +53,9 @@ Ctrl + Shift + P
 
 한글 깨짐
 - Ctrl + Shift + P -> settings.json 검색 -> Preferences: Open User Settings (JSON) 선택
+둘중에 한가지 선택
 - "c" : "chcp 65001 && ..."
+- "c": "cd $dir && gcc -fexec-charset=CP949 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt.exe && del $fileNameWithoutExt.exe"
 
 !c 자동 완성(기본 포맷)
 - Ctrl + Shift + P -> snippets 검색 -> 코드 조각 구성(Configure Snippets) -> C 클릭
