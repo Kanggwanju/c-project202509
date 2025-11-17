@@ -35,6 +35,15 @@ int partition(int arr[], int low, int high) {
     return i;
 }
 
+// 퀵 정렬 함수
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
 // 배열 출력 함수
 void printArray(int A[], int size) {
     for (int i = 0; i < size; i++) {
@@ -57,18 +66,36 @@ int main(void) {
     // 1. 제일 마지막 요소를 피벗으로 지정
     // 2. j=0 인덱스부터 피벗보다 작은지 확인
     // 2-1. 피벗보다 요소의 수가 크면 지나감
-    // 2-2. 처음 피벗보다 작은 요소를 만났을때 i = j로 두고, j = 0 이었을 땐 그대로, j >= 1 이면 첫번째 요소와 교환
-    // 2-3. 이후 피벗보다 작은 요소를 만났다면 i+1로 이동, i의 요소와 j의 요소를 교환
+    // 2-2. 피벗보다 작거나 같은 요소를 만났다면 i+1로 이동, i의 요소와 j의 요소를 교환
     // 3. 파티션의 마무리 (피벗 제자리 찾기): j가 탐색 완료, i+1로 이동, i의 요소와 피벗 요소를 교환
 
     int arr[] = {7, 2, 1, 6, 8, 5, 3, 4};
+    /*
+    quickSort(0, 7)
+    ㄴ partition(0, 7) - [2, 1, 3, **4, 8, 5, 7, 6] (pi: 3)
+    ㄴ quickSort(0, pi - 1)
+       ㄴ partition(0, 2) - [2, 1, **3] (pi: 2)
+       ㄴ quickSort(0, pi - 1)
+          ㄴ partition(0, 1) - [**1, 2] (pi: 0)
+          ㄴ quickSort(0, pi - 1) - 재귀 종료(정렬할 원소 1개 이하)
+          ㄴ quickSort(pi + 1, 1) - 재귀 종료
+       ㄴ quickSort(pi + 1, 2)
+    ㄴ quickSort(pi + 1, 7)
+       ㄴ partition(4, 7) - [5, **6, 7, 8] (pi: 5)
+       ㄴ quickSort(4, pi - 1) - 재귀 종료
+       ㄴ quickSort(pi + 1, 7)
+          ㄴ partition(6, 7) - [7, **8] (pi: 7)
+          ㄴ quickSort(6, pi - 1) - 재귀 종료(정렬할 원소 1개 이하)
+          ㄴ quickSort(pi + 1, 7) - 재귀 종료(low > high)
+    */
+
     int len = sizeof(arr) / sizeof(arr[0]);
 
     printf("주어진 배열: \n");
     printArray(arr, len);
 
-    // 파티셔닝 진행
-    partition(arr, 0, len - 1);
+    // 퀵 정렬 진행
+    quickSort(arr, 0, len - 1);
 
     printf("\n정렬된 배열: \n");
     printArray(arr, len);
