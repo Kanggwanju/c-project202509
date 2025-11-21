@@ -4,6 +4,7 @@
 int linearSearch(int arr[], int n, int target) {
     // 배열을 처음부터 끝까지 순회
     for (int i = 0; i < n; i++) {
+        printf("반복문 실행 %d회차\n", i + 1);
         if (arr[i] == target) {
             // 찾았으면 해당 시점의 i를 리턴
             return i;
