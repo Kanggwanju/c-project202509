@@ -71,6 +71,10 @@ void print_queue(CircularQueue* q) {
 int main(void) {
     
     // 배열로 큐 구현
+    // 메모리 효율 좋음
+    // 크기 고정, 구현 까다로움
+    // enqueue/dequeue 모두 O(1)
+    // 최대 크기를 알 때
     CircularQueue q;
     init_queue(&q);
 
