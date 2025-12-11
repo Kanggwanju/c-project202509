@@ -15,7 +15,7 @@ int main(void) {
 
     for (i = 2; i < number; i++) {
         // i가 소수이고, i가 number(13195)의 약수일 경우
-        if (isPrime(i) == i && number % i == 0) {
+        if (isPrime(i) == 1 && number % i == 0) {
             max_div = i;
         }
     }
