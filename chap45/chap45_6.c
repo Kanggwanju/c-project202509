@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // 2차원 배열 초기화
-void set (int** arr, int* data, int rows, int cols) {
+void set(int** arr, int* data, int rows, int cols) {
     for (int i = 0; i < rows * cols; ++i) {
         arr[((i + 1) / rows) % rows][(i + 1) % cols] = data[i];
     }
